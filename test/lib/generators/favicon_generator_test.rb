@@ -37,7 +37,7 @@ EOF
 </browserconfig>
 EOF
     gen = FaviconGenerator.new
-    assert_equal expected, gen.replace_url_by_asset_path(original)
+    assert_equal expected, gen.send(:replace_url_by_asset_path, original)
   end
 
   test "replace URLs by asset_path in JSON" do
@@ -81,7 +81,7 @@ EOF
 }
 EOF
     gen = FaviconGenerator.new
-    assert_equal expected, gen.replace_url_by_asset_path(original)
+    assert_equal expected, gen.send(:replace_url_by_asset_path, original)
   end
 
   test "replace URLs by asset_path in HTML" do
@@ -107,6 +107,6 @@ EOF
 <meta name="theme-color" content="#ffffff">
 EOF
     gen = FaviconGenerator.new
-    assert_equal expected, gen.replace_url_by_asset_path(original)
+    assert_equal expected, gen.send(:replace_url_by_asset_path, original)
   end
 end
