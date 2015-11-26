@@ -12,17 +12,19 @@ class FaviconGenerator < Rails::Generators::Base
   def generate_favicon
     req = JSON.parse File.read('config/favicon.json')
 
+    req['api_key'] = API_KEY
 
-    req['favicon_generation']['files_location'] = Hash.new
-    req['favicon_generation']['files_location']['type'] = 'path'
-    req['favicon_generation']['files_location']['path'] = PATH_UNIQUE_KEY
+    req['files_location'] = Hash.new
+    req['files_location']['type'] = 'path'
+    req['files_location']['path'] = PATH_UNIQUE_KEY
 
-    master_pic = File.expand_path(".") + '/' + req['favicon_generation']['master_picture']
-    req['favicon_generation']['master_picture'] = Hash.new
-    req['favicon_generation']['master_picture']['type'] = 'inline'
-    req['favicon_generation']['master_picture']['content'] = Base64.encode64(File.read(master_pic))
+    master_pic = File.expand_path(".") + '/' + req['master_picture']
+    req['master_picture'] = Hash.new
+    req['master_picture']['type'] = 'inline'
+    req['master_picture']['content'] = Base64.encode64(File.read(master_pic))
 
-    response = RestClient.post("https://realfavicongenerator.net/api/favicon", req.to_json, content_type: :json)
+    response = RestClient.post("https://realfavicongenerator.net/api/favicon",
+      {favicon_generation: req}.to_json, content_type: :json)
     resp = JSON.parse(response)
 
     zip = resp['favicon_generation_result']['favicon']['package_url']
