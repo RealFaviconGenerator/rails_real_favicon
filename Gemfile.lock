@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_real_favicon (0.0.2)
+    rails_real_favicon (0.0.1)
       json
       rails (~> 4.2.5)
       rest_client
