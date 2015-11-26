@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.5"
-  s.add_dependency "rest_client"
+  s.add_dependency "rest-client"
   s.add_dependency "json"
   s.add_dependency "zip"
 

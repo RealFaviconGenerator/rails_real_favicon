@@ -1,4 +1,4 @@
-require 'rest_client'
+require 'rest-client'
 require 'json'
 require 'open-uri'
 require 'zip'
