@@ -7,11 +7,11 @@ require "rails_real_favicon/version"
 Gem::Specification.new do |s|
   s.name        = "rails_real_favicon"
   s.version     = RailsRealFavicon::VERSION
-  s.authors     = [""]
-  s.email       = [""]
-  s.homepage    = "https://realfavicongenerator.net/"
-  s.summary     = "TO-DO: Summary of RailsRealFavicon."
-  s.description = "TO-DO: Description of RailsRealFavicon."
+  s.authors     = ["Philippe Bernard"]
+  s.email       = ["philippe@realfavicongenerator.net"]
+  s.homepage    = "https://github.com/RealFaviconGenerator/rails_real_favicon"
+  s.summary     = "Manage the favicon of your RoR project with RealFaviconGenerator"
+  s.description = "Generate and install a favicon for all platforms with RealFaviconGenerator."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
