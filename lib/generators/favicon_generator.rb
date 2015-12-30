@@ -70,7 +70,7 @@ class FaviconGenerator < Rails::Generators::Base
   end
 
   def extract_zip(zip_path, output_dir)
-    Zip::ZipFile.open zip_path do |zip_file|
+    Zip::File.open zip_path do |zip_file|
       zip_file.each do |f|
         f_path=File.join  output_dir, f.name
         FileUtils.mkdir_p  File.dirname(f_path)
