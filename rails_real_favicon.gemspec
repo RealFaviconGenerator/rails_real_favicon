@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 3.1", "< 5"
   s.add_dependency "rest-client", "~> 1.8"
   s.add_dependency "json", "~> 1.7"
-  s.add_dependency "zip", "~> 2"
+  s.add_dependency "rubyzip", "~> 1"
 end
