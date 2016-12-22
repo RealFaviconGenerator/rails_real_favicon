@@ -21,7 +21,7 @@ class FaviconGenerator < Rails::Generators::Base
     master_pic = File.expand_path(".") + '/' + req['master_picture']
     req['master_picture'] = Hash.new
     req['master_picture']['type'] = 'inline'
-    req['master_picture']['content'] = Base64.encode64(File.read(master_pic))
+    req['master_picture']['content'] = Base64.encode64(File.binread(master_pic))
 
     response = RestClient.post("https://realfavicongenerator.net/api/favicon",
       {favicon_generation: req}.to_json, content_type: :json)
@@ -33,7 +33,7 @@ class FaviconGenerator < Rails::Generators::Base
     Dir.mktmpdir 'rfg' do |tmp_dir|
       download_package zip, tmp_dir
       Dir["#{tmp_dir}/*.*"].each do |file|
-        content = File.read(file)
+        content = File.binread(file)
         new_ext = ''
         if File.extname(file) == '.json' or File.extname(file) == '.xml'
           content = replace_url_by_asset_path content
