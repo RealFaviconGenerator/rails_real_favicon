@@ -81,9 +81,9 @@ class FaviconGenerator < Rails::Generators::Base
 
   def replace_url_by_asset_path(content)
     repl = "\"<%= asset_path 'favicon\\k<path>' %>\""
-    content.gsub /"#{PATH_UNIQUE_KEY}(?<path>[^"]+)"/ do |s|
-      s.gsub! /\\\//, '/'
-      s.gsub /"#{PATH_UNIQUE_KEY}(?<path>[^"]+)"/, repl
+    content.gsub(/"#{PATH_UNIQUE_KEY}(?<path>[^"]+)"/) do |s|
+      s.gsub!(/\\\//, '/')
+      s.gsub(/"#{PATH_UNIQUE_KEY}(?<path>[^"]+)"/, repl)
     end
   end
 
