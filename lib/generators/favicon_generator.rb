@@ -35,7 +35,7 @@ class FaviconGenerator < Rails::Generators::Base
       Dir["#{tmp_dir}/*.*"].each do |file|
         content = File.binread(file)
         new_ext = ''
-        if File.extname(file) == '.json' or File.extname(file) == '.xml'
+        if %w{.json .xml .webmanifest}.include? File.extname(file)
           content = replace_url_by_asset_path content
           new_ext = '.erb'
         end
