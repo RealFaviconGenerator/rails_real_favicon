@@ -12,10 +12,10 @@ class FaviconGeneratorTest < Rails::Generators::TestCase
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="Dfv87ZbNh2/mstile-70x70.png"/>
-      <square150x150logo src="Dfv87ZbNh2/mstile-150x150.png"/>
-      <square310x310logo src="Dfv87ZbNh2/mstile-310x310.png"/>
-      <wide310x150logo src="Dfv87ZbNh2/mstile-310x150.png"/>
+      <square70x70logo src="/Dfv87ZbNh2/mstile-70x70.png"/>
+      <square150x150logo src="/Dfv87ZbNh2/mstile-150x150.png"/>
+      <square310x310logo src="/Dfv87ZbNh2/mstile-310x310.png"/>
+      <wide310x150logo src="/Dfv87ZbNh2/mstile-310x150.png"/>
       <TileColor>#da532c</TileColor>
     </tile>
   </msapplication>
@@ -46,13 +46,13 @@ EOF
 	"name": "The app",
 	"icons": [
 		{
-			"src": "Dfv87ZbNh2\\/android-chrome-36x36.png",
+			"src": "/Dfv87ZbNh2\\/android-chrome-36x36.png",
 			"sizes": "36x36",
 			"type": "image\\/png",
 			"density": "0.75"
 		},
 		{
-			"src": "Dfv87ZbNh2\\/android-chrome-48x48.png",
+			"src": "/Dfv87ZbNh2\\/android-chrome-48x48.png",
 			"sizes": "48x48",
 			"type": "image\\/png",
 			"density": "1.0"
@@ -86,13 +86,13 @@ EOF
 
   test "replace URLs by asset_path in HTML" do
     original = <<EOF
-<link rel="apple-touch-icon" sizes="180x180" href="Dfv87ZbNh2/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="Dfv87ZbNh2/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="Dfv87ZbNh2/manifest.json">
-<link rel="shortcut icon" href="Dfv87ZbNh2/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/Dfv87ZbNh2/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/Dfv87ZbNh2/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/Dfv87ZbNh2/manifest.json">
+<link rel="shortcut icon" href="/Dfv87ZbNh2/favicon.ico">
 <meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-TileImage" content="Dfv87ZbNh2/mstile-144x144.png">
-<meta name="msapplication-config" content="Dfv87ZbNh2/browserconfig.xml">
+<meta name="msapplication-TileImage" content="/Dfv87ZbNh2/mstile-144x144.png">
+<meta name="msapplication-config" content="/Dfv87ZbNh2/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
 EOF
 

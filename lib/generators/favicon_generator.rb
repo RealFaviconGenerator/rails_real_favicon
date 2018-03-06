@@ -7,7 +7,7 @@ require 'base64'
 class FaviconGenerator < Rails::Generators::Base
   API_KEY = '04641dc33598f5463c2f1ff49dd9e4a617559f4b'
 
-  PATH_UNIQUE_KEY = 'Dfv87ZbNh2'
+  PATH_UNIQUE_KEY = '/Dfv87ZbNh2'
 
   def generate_favicon
     req = JSON.parse File.read('config/favicon.json')
