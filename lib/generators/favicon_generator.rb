@@ -10,7 +10,11 @@ class FaviconGenerator < Rails::Generators::Base
   PATH_UNIQUE_KEY = '/Dfv87ZbNh2'
 
   def generate_favicon
-    req = JSON.parse File.read('config/favicon.json')
+    if File.exist?('config/favicon.yml') && defined?(Rails.application.config_for)
+      req = Rails.application.config_for(:favicon)
+    else
+      req = JSON.parse File.read('config/favicon.json')
+    end
 
     req['api_key'] = API_KEY
 
