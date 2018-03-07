@@ -4,7 +4,11 @@ Create a multi-platform favicon for your Ruby on Rails project with RealFaviconG
 
 To use this Rails plugin:
 
-* Go to http://realfavicongenerator.net, submit your image and craft your icons.
+* Go to [RealFaviconGenerator for Ruby on Rails](https://realfavicongenerator.net/favicon/ruby_on_rails), submit your image and craft your icons.
 https://cloud.githubusercontent.com/assets/423852/11431579/88a71cb0-949b-11e5-9dd4-3cf57f4e3b1a.png
-* In the result page, click the Ruby on Rails tab and follow the instructions.
+* In the result page, follow the instructions.
 https://cloud.githubusercontent.com/assets/423852/11431581/8c0ab45c-949b-11e5-9b4a-c3a2beba0180.png
+
+Already have you favicon and wondering how to regenerate it again? From the root of your project, just re-run:
+
+    rails generate favicon
