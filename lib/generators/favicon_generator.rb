@@ -1,4 +1,5 @@
-require 'rest-client'
+require 'net/http'
+require 'uri'
 require 'json'
 require 'open-uri'
 require 'zip'
@@ -27,9 +28,13 @@ class FaviconGenerator < Rails::Generators::Base
     req['master_picture']['type'] = 'inline'
     req['master_picture']['content'] = Base64.encode64(File.binread(master_pic))
 
-    response = RestClient.post("https://realfavicongenerator.net/api/favicon",
-      {favicon_generation: req}.to_json, content_type: :json)
-    resp = JSON.parse(response)
+    uri = URI.parse("https://realfavicongenerator.net/api/favicon")
+    resp = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+      request = Net::HTTP::Post.new uri
+      request.body = { favicon_generation: req }.to_json
+      request["Content-Type"] = "application/json"
+      JSON.parse(http.request(request).body)
+    end
 
     zip = resp['favicon_generation_result']['favicon']['package_url']
     FileUtils.mkdir_p('app/assets/images/favicon')
