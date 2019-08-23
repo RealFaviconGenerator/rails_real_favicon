@@ -29,7 +29,7 @@ class FaviconGenerator < Rails::Generators::Base
     req['master_picture']['content'] = Base64.encode64(File.binread(master_pic))
 
     uri = URI.parse("https://realfavicongenerator.net/api/favicon")
-    resp = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+    resp = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https", read_timeout: 20) do |http|
       request = Net::HTTP::Post.new uri
       request.body = { favicon_generation: req }.to_json
       request["Content-Type"] = "application/json"
