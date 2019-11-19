@@ -14,5 +14,5 @@ Rails.application.config.assets.configure do |env|
     env.register_preprocessor('application/manifest+json', Sprockets::ERBProcessor)
   end  
   
-  env.register_mime_type('application/manifest+json', extensions: extensions)
+  env.register_mime_type(mime_type, extensions: extensions)
 end
