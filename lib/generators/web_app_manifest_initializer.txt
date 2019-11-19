@@ -11,7 +11,7 @@ Rails.application.config.assets.configure do |env|
 
   if Sprockets::VERSION.to_i >= 4
     extensions << '.webmanifest.erb'    
-    env.register_preprocessor('application/manifest+json', Sprockets::ERBProcessor)
+    env.register_preprocessor(mime_type, Sprockets::ERBProcessor)
   end  
   
   env.register_mime_type(mime_type, extensions: extensions)
