@@ -7,8 +7,10 @@ require 'base64'
 
 class FaviconGenerator < Rails::Generators::Base
   API_KEY = '04641dc33598f5463c2f1ff49dd9e4a617559f4b'
-
+ 
   PATH_UNIQUE_KEY = '/Dfv87ZbNh2'
+
+  class_option(:timeout, type: :numeric, aliases: '-t', default: 30)
 
   def generate_favicon
     if File.exist?('config/favicon.yml') && defined?(Rails.application.config_for)
@@ -29,11 +31,16 @@ class FaviconGenerator < Rails::Generators::Base
     req['master_picture']['content'] = Base64.encode64(File.binread(master_pic))
 
     uri = URI.parse("https://realfavicongenerator.net/api/favicon")
-    resp = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https", read_timeout: 20) do |http|
+    timeout = options[:timeout]
+    resp = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https", read_timeout: timeout) do |http|
       request = Net::HTTP::Post.new uri
       request.body = { favicon_generation: req }.to_json
       request["Content-Type"] = "application/json"
-      JSON.parse(http.request(request).body)
+      begin
+        JSON.parse(http.request(request).body)
+      rescue Net::ReadTimeout
+        raise RuntimeError.new("Operation timed out after #{timeout} seconds, pass a `-t` option for a longer timeout")
+      end
     end
 
     zip = resp['favicon_generation_result']['favicon']['package_url']
@@ -100,3 +107,4 @@ class FaviconGenerator < Rails::Generators::Base
   end
 
 end
+
