@@ -7,7 +7,7 @@ require 'base64'
 
 class FaviconGenerator < Rails::Generators::Base
   API_KEY = '04641dc33598f5463c2f1ff49dd9e4a617559f4b'
- 
+
   PATH_UNIQUE_KEY = '/Dfv87ZbNh2'
 
   class_option(:timeout, type: :numeric, aliases: '-t', default: 30)
@@ -82,7 +82,7 @@ class FaviconGenerator < Rails::Generators::Base
     end
 
     File.open(local_path, "wb") do |saved_file|
-      open(url, "rb") do |read_file|
+      URI.open(url, "rb") do |read_file|
         saved_file.write(read_file.read)
       end
     end
@@ -107,4 +107,3 @@ class FaviconGenerator < Rails::Generators::Base
   end
 
 end
-
