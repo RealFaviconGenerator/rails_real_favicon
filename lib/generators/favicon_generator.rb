@@ -62,8 +62,8 @@ class FaviconGenerator < Rails::Generators::Base
     create_file "app/views/application/_favicon.html.erb",
       replace_url_by_asset_path(resp['favicon_generation_result']['favicon']['html_code'])
 
-      create_file "config/initializers/web_app_manifest.rb",
-        File.read(File.dirname(__FILE__) + '/web_app_manifest_initializer.txt')
+      create_file "config/initializers/favicon_manifests.rb",
+        File.read(File.dirname(__FILE__) + '/favicon_manifests_initializer.txt')
   end
 
   private
